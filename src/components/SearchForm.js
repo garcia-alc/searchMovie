@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-const API_KEY = '4287ad07'
+const API_KEY = '8dae9a41'
 
 export class SearchForm extends Component {
   state = {
@@ -15,7 +15,7 @@ export class SearchForm extends Component {
     e.preventDefault()
     const { inputMovie } = this.state
 
-    fetch(`http://www.omdbapi.com/?apikey=${API_KEY}&s=${inputMovie}`)
+    fetch(`http://www.omdbapi.com/?apikey= ${API_KEY}&s=${inputMovie}`)
       .then(res => res.json())
       .then(results => {
         const { Search = [], totalResults = "0" } = results
