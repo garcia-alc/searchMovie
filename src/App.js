@@ -2,29 +2,19 @@ import React, {Component} from 'react'
 import './App.css';
 import 'bulma/css/bulma.css'
 import {Title} from './components/Title'
-import {SearchFrom} from './components/SearchForm'
-import {Movie} from './components/Movie'
+import {SearchForm} from './components/SearchForm'
+import {MoviesList} from './components/MoviesList'
+
+import {Detail} from './pages/Detail'
 
 class App extends Component() {
-  state = {Results : []  }
+  state = {Results : false, results :[]  }
 
 _handleResults = (results) =>{
-  this.setState({results}) 
+  this.setState({results, usedSearch: true}) 
 
 }
-_renderResults(){
-  const {results} = this.state
-  return results.map(movie =>{
-    return(
-    <Movie>
-      key = {movie.imdbID}
-      title = {movie.title}
-      year = {movie.year}
-      poster = {movie.poster}
-    </Movie>
-    )
-  })
-}
+
 
   render() {
     return ( 
@@ -35,13 +25,14 @@ _renderResults(){
         </div>
         {this.state.results.length === 0
         ?<p>Sin reusltados</p>
-        : this._handleResults()
+        : <MoviesList movies  = {this.state.results}/>
         }
 
       </div>
     );
-  }
+      }
+  } 
  
-}
+
 
 export default App;
